@@ -1,3 +1,5 @@
+# CreateDogs inherits from ActiveRecord::Migration
+# ActiveRecord::Migration is a Rails class that already knows how to create and edit database tables
 class CreateDogs < ActiveRecord::Migration
 
   # this file was automatically created when we ran 'rails g scaffold dogs name:string' in our terminal
