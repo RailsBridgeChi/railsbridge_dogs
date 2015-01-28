@@ -10,8 +10,12 @@
 
   <tbody>
     <% @dogs.each do |dog| %>
+      <!-- each means this is a loop - for each thing in the @dogs array, we will execute the following code -->
+      <!-- @dogs was set in dogs_controller#index -->
+      <!-- dog is the variable for the individual dog here -->
+      <!-- so the code here will execute as many times as there are dogs -- printing a line for each dog -->
       <tr>
-        <td><%= dog.name %></td>
+        <td><b><%= dog.name %></b></td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
         <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
