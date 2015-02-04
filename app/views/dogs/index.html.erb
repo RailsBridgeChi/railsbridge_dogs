@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Age</th> <!-- we added this when we added the age to the dogs table -->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <!-- so the code here will execute as many times as there are dogs -- printing a line for each dog -->
       <tr>
         <td><b><%= dog.name %></b></td>
+	<td><%= dog.age %></td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
         <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
