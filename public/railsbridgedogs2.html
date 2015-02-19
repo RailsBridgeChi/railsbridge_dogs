@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>railsbridgedogs2</title>
-<!-- 2015-02-04 Wed 14:54 -->
+<!-- 2015-02-19 Thu 16:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Clara" />
@@ -145,8 +145,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1">1. RAILSBRIDGE DOGS: Module II</a></li>
 <li><a href="#sec-2">2. Datatypes</a>
 <ul>
-<li><a href="#sec-2-1">2.1. Now that we have a table full of dogs with names, we'd like to add some more information! Just having a list of names isn't that interesting. But we know lots of things about our dogs &#x2013; age, color, date they entered the shelter, whether or not they're fixed &#x2013; that's good to have around.</a></li>
-<li><a href="#sec-2-2">2.2. In this module, we will learn how to add fields to a database table, and we will learn a bit about the data types that are our options.</a></li>
+<li><a href="#sec-2-1">2.1. Now that we have a table full of dogs with names, we'd like to add some more information! Just having a list of names isn't that interesting. But we know lots of things about our dogs &#x2013; age, color, date they entered the shelter, whether or not they're fixed &#x2013; that we'd like to have available for our potential adopters.</a></li>
+<li><a href="#sec-2-2">2.2. In this module, we will learn how to add fields to a database table, and we will learn a bit about the data types that are our options. A <span class="underline">data type</span> refers to the way we define the field in our database table, which indicates what kind of values can then be stored in that field. For example, when we named our dogs in the last module, we used the data type "string", which refers to anything that can be put in quotes (like "string" or "hello world" or "My, that's a cute dog you have there!"). But for things like age or shelter entrance date, an "integer" or "date" data type will be more appropriate.</a></li>
 <li><a href="#sec-2-3">2.3. CODE:</a>
 <ul>
 <li><a href="#sec-2-3-1">2.3.1. rails g migration AddAgeToDogs age:integer</a></li>
@@ -157,7 +157,8 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-2-4-1">2.4.1. When we first generated our "dogs" table, we put "name:string" in our generating code &#x2013; this created for us a field in our "dogs" table called "name" that stores "string" values.</a></li>
 <li><a href="#sec-2-4-2">2.4.2. A string is a common type of value used in programming &#x2013; a short amount of text that can be contained within quotes. So "Fido" is a string, "Hello World" is a string, "asdf!1!eleventyone" is a string.</a></li>
-<li><a href="#sec-2-4-3">2.4.3. And an integer is&#x2026; well, you probably know what that is.</a></li>
+<li><a href="#sec-2-4-3">2.4.3. And an integer (as you may remember from math class) is any number without a fractional part &#x2013; e.g. 1, 0, 205, -53, etc.</a></li>
+<li><a href="#sec-2-4-4">2.4.4. lists the data types that we can use in Rails migrations.</a></li>
 </ul>
 </li>
 <li><a href="#sec-2-5">2.5. CODE:</a>
@@ -168,7 +169,10 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-2-6">2.6. WHAT TO KNOW:</a>
 <ul>
-<li><a href="#sec-2-6-1">2.6.1. this is telling our code what parameters to accept. [talk some about why we need this and how it works, someone will write this part later&#x2026;]</a></li>
+<li><a href="#sec-2-6-1">2.6.1. This is telling our controller code what parameters to accept for the "dog" object.</a></li>
+<li><a href="#sec-2-6-2">2.6.2. This means that if we send part of the DogsController a request which asks to change or set a dog's "name" or "age", the controller will pass those along; but if we ask to change a dog's "admin<sub>status</sub>" or "fblrg", the controller will not allow this.</a></li>
+<li><a href="#sec-2-6-3">2.6.3. Why is this important? Because it's easy for someone with bad intentions to send whatever parameters they want to our request. So we don't want to allow just arbitrary parameters to be set by request &#x2013; then malicious users could do things like send is<sub>admin</sub>=true when updating their own account, and gain access to everything!</a></li>
+<li><a href="#sec-2-6-4">2.6.4. discusses how the latest versions of Rails handle parameters &#x2013; the default behavior is the most secure, i.e. not accepting any parameters not explicitly allowed in the code. So each time we add a new field to our model, if we want the existing "edit"/"new"/"update" code to accept input for that field, we need to add it to the permitted parameters.</a></li>
 </ul>
 </li>
 <li><a href="#sec-2-7">2.7. CODE:</a>
@@ -180,8 +184,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-8">2.8. WHAT TO KNOW:</a>
 <ul>
 <li><a href="#sec-2-8-1">2.8.1. Now, when you go to edit one of your dogs, you'll be able to set their age!</a></li>
-<li><a href="#sec-2-8-2">2.8.2. number<sub>field</sub> is a Rails form helper</a></li>
-<li><a href="#sec-2-8-3">2.8.3. [link to the documentation about Rails form helpers]</a></li>
+<li><a href="#sec-2-8-2">2.8.2. number<sub>field</sub> is a Rails form helper; this creates a field that accepts numbers in the form the user sees in their browser.</a></li>
+<li><a href="#sec-2-8-3">2.8.3. lists and explains the various form helpers available in Rails.</a></li>
 </ul>
 </li>
 <li><a href="#sec-2-9">2.9. CODE:</a>
@@ -196,10 +200,14 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-10-1">2.10.1. Now, we should be fully prepared to add ages to our dogs. Here's what we did:</a></li>
 <li><a href="#sec-2-10-2">2.10.2. Go into your application and make sure you can add and view dogs' ages! (If you can't, review the above to see where you went wrong, and/or ask a TA.)</a></li>
 <li><a href="#sec-2-10-3">2.10.3. Now is also a good time to git commit your changes and push to Heroku. [link to where we did this before]</a></li>
-<li><a href="#sec-2-10-4">2.10.4. Next: learn about some other datatypes! [link to documentation about Rails datatypes]</a></li>
-<li><a href="#sec-2-10-5">2.10.5. Try to choose the right datatypes for:</a></li>
-<li><a href="#sec-2-10-6">2.10.6. Then, try to add those to your application.</a></li>
-<li><a href="#sec-2-10-7">2.10.7. [add: the exact code for each of these]</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-11">2.11. MORE:</a>
+<ul>
+<li><a href="#sec-2-11-1">2.11.1. Next: learn about some other datatypes! See the link above.</a></li>
+<li><a href="#sec-2-11-2">2.11.2. Try to choose the right datatypes for:</a></li>
+<li><a href="#sec-2-11-3">2.11.3. Then, try to add those fields to your application, using the same steps we used to add age to our dogs; make sure you can edit each of these fields and see them listed on your homepage.</a></li>
+<li><a href="#sec-2-11-4">2.11.4. Ask a TA or work with another student if you run into issues!</a></li>
 </ul>
 </li>
 </ul>
@@ -214,10 +222,10 @@ for the JavaScript code in this tag.
 <h2 id="sec-2"><span class="section-number-2">2</span> Datatypes</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Now that we have a table full of dogs with names, we'd like to add some more information! Just having a list of names isn't that interesting. But we know lots of things about our dogs &#x2013; age, color, date they entered the shelter, whether or not they're fixed &#x2013; that's good to have around.</h3>
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Now that we have a table full of dogs with names, we'd like to add some more information! Just having a list of names isn't that interesting. But we know lots of things about our dogs &#x2013; age, color, date they entered the shelter, whether or not they're fixed &#x2013; that we'd like to have available for our potential adopters.</h3>
 </div>
 <div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> In this module, we will learn how to add fields to a database table, and we will learn a bit about the data types that are our options.</h3>
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> In this module, we will learn how to add fields to a database table, and we will learn a bit about the data types that are our options. A <span class="underline">data type</span> refers to the way we define the field in our database table, which indicates what kind of values can then be stored in that field. For example, when we named our dogs in the last module, we used the data type "string", which refers to anything that can be put in quotes (like "string" or "hello world" or "My, that's a cute dog you have there!"). But for things like age or shelter entrance date, an "integer" or "date" data type will be more appropriate.</h3>
 </div>
 <div id="outline-container-sec-2-3" class="outline-3">
 <h3 id="sec-2-3"><span class="section-number-3">2.3</span> CODE:</h3>
@@ -239,7 +247,10 @@ for the JavaScript code in this tag.
 <h4 id="sec-2-4-2"><span class="section-number-4">2.4.2</span> A string is a common type of value used in programming &#x2013; a short amount of text that can be contained within quotes. So "Fido" is a string, "Hello World" is a string, "asdf!1!eleventyone" is a string.</h4>
 </div>
 <div id="outline-container-sec-2-4-3" class="outline-4">
-<h4 id="sec-2-4-3"><span class="section-number-4">2.4.3</span> And an integer is&#x2026; well, you probably know what that is.</h4>
+<h4 id="sec-2-4-3"><span class="section-number-4">2.4.3</span> And an integer (as you may remember from math class) is any number without a fractional part &#x2013; e.g. 1, 0, 205, -53, etc.</h4>
+</div>
+<div id="outline-container-sec-2-4-4" class="outline-4">
+<h4 id="sec-2-4-4"><span class="section-number-4">2.4.4</span> <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column">http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-column</a> lists the data types that we can use in Rails migrations.</h4>
 </div>
 </div>
 <div id="outline-container-sec-2-5" class="outline-3">
@@ -256,7 +267,16 @@ for the JavaScript code in this tag.
 <h3 id="sec-2-6"><span class="section-number-3">2.6</span> WHAT TO KNOW:</h3>
 <div class="outline-text-3" id="text-2-6">
 </div><div id="outline-container-sec-2-6-1" class="outline-4">
-<h4 id="sec-2-6-1"><span class="section-number-4">2.6.1</span> this is telling our code what parameters to accept. [talk some about why we need this and how it works, someone will write this part later&#x2026;]</h4>
+<h4 id="sec-2-6-1"><span class="section-number-4">2.6.1</span> This is telling our controller code what parameters to accept for the "dog" object.</h4>
+</div>
+<div id="outline-container-sec-2-6-2" class="outline-4">
+<h4 id="sec-2-6-2"><span class="section-number-4">2.6.2</span> This means that if we send part of the DogsController a request which asks to change or set a dog's "name" or "age", the controller will pass those along; but if we ask to change a dog's "admin<sub>status</sub>" or "fblrg", the controller will not allow this.</h4>
+</div>
+<div id="outline-container-sec-2-6-3" class="outline-4">
+<h4 id="sec-2-6-3"><span class="section-number-4">2.6.3</span> Why is this important? Because it's easy for someone with bad intentions to send whatever parameters they want to our request. So we don't want to allow just arbitrary parameters to be set by request &#x2013; then malicious users could do things like send is<sub>admin</sub>=true when updating their own account, and gain access to everything!</h4>
+</div>
+<div id="outline-container-sec-2-6-4" class="outline-4">
+<h4 id="sec-2-6-4"><span class="section-number-4">2.6.4</span> <a href="http://api.rubyonrails.org/classes/ActionController/Parameters.html">http://api.rubyonrails.org/classes/ActionController/Parameters.html</a> discusses how the latest versions of Rails handle parameters &#x2013; the default behavior is the most secure, i.e. not accepting any parameters not explicitly allowed in the code. So each time we add a new field to our model, if we want the existing "edit"/"new"/"update" code to accept input for that field, we need to add it to the permitted parameters.</h4>
 </div>
 </div>
 <div id="outline-container-sec-2-7" class="outline-3">
@@ -283,10 +303,10 @@ for the JavaScript code in this tag.
 <h4 id="sec-2-8-1"><span class="section-number-4">2.8.1</span> Now, when you go to edit one of your dogs, you'll be able to set their age!</h4>
 </div>
 <div id="outline-container-sec-2-8-2" class="outline-4">
-<h4 id="sec-2-8-2"><span class="section-number-4">2.8.2</span> number<sub>field</sub> is a Rails form helper</h4>
+<h4 id="sec-2-8-2"><span class="section-number-4">2.8.2</span> number<sub>field</sub> is a Rails form helper; this creates a field that accepts numbers in the form the user sees in their browser.</h4>
 </div>
 <div id="outline-container-sec-2-8-3" class="outline-4">
-<h4 id="sec-2-8-3"><span class="section-number-4">2.8.3</span> [link to the documentation about Rails form helpers]</h4>
+<h4 id="sec-2-8-3"><span class="section-number-4">2.8.3</span> <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html">http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html</a> lists and explains the various form helpers available in Rails.</h4>
 </div>
 </div>
 <div id="outline-container-sec-2-9" class="outline-3">
@@ -319,29 +339,33 @@ for the JavaScript code in this tag.
 <div id="outline-container-sec-2-10-3" class="outline-4">
 <h4 id="sec-2-10-3"><span class="section-number-4">2.10.3</span> Now is also a good time to git commit your changes and push to Heroku. [link to where we did this before]</h4>
 </div>
-<div id="outline-container-sec-2-10-4" class="outline-4">
-<h4 id="sec-2-10-4"><span class="section-number-4">2.10.4</span> Next: learn about some other datatypes! [link to documentation about Rails datatypes]</h4>
 </div>
-<div id="outline-container-sec-2-10-5" class="outline-4">
-<h4 id="sec-2-10-5"><span class="section-number-4">2.10.5</span> Try to choose the right datatypes for:</h4>
-<div class="outline-text-4" id="text-2-10-5">
-</div><ol class="org-ol"><li><a id="sec-2-10-5-1" name="sec-2-10-5-1"></a>the date a dog arrived in the shelter<br  /></li>
-<li><a id="sec-2-10-5-2" name="sec-2-10-5-2"></a>the color of the dog<br  /></li>
-<li><a id="sec-2-10-5-3" name="sec-2-10-5-3"></a>a description of the dog's temperament<br  /></li>
-<li><a id="sec-2-10-5-4" name="sec-2-10-5-4"></a>whether or not the dog is fixed<br  /></li></ol>
+<div id="outline-container-sec-2-11" class="outline-3">
+<h3 id="sec-2-11"><span class="section-number-3">2.11</span> MORE:</h3>
+<div class="outline-text-3" id="text-2-11">
+</div><div id="outline-container-sec-2-11-1" class="outline-4">
+<h4 id="sec-2-11-1"><span class="section-number-4">2.11.1</span> Next: learn about some other datatypes! See the link above.</h4>
 </div>
-<div id="outline-container-sec-2-10-6" class="outline-4">
-<h4 id="sec-2-10-6"><span class="section-number-4">2.10.6</span> Then, try to add those to your application.</h4>
+<div id="outline-container-sec-2-11-2" class="outline-4">
+<h4 id="sec-2-11-2"><span class="section-number-4">2.11.2</span> Try to choose the right datatypes for:</h4>
+<div class="outline-text-4" id="text-2-11-2">
+</div><ol class="org-ol"><li><a id="sec-2-11-2-1" name="sec-2-11-2-1"></a>the date a dog arrived in the shelter<br  /></li>
+<li><a id="sec-2-11-2-2" name="sec-2-11-2-2"></a>the color of the dog<br  /></li>
+<li><a id="sec-2-11-2-3" name="sec-2-11-2-3"></a>a description of the dog's temperament<br  /></li>
+<li><a id="sec-2-11-2-4" name="sec-2-11-2-4"></a>whether or not the dog is fixed<br  /></li></ol>
 </div>
-<div id="outline-container-sec-2-10-7" class="outline-4">
-<h4 id="sec-2-10-7"><span class="section-number-4">2.10.7</span> [add: the exact code for each of these]</h4>
+<div id="outline-container-sec-2-11-3" class="outline-4">
+<h4 id="sec-2-11-3"><span class="section-number-4">2.11.3</span> Then, try to add those fields to your application, using the same steps we used to add age to our dogs; make sure you can edit each of these fields and see them listed on your homepage.</h4>
+</div>
+<div id="outline-container-sec-2-11-4" class="outline-4">
+<h4 id="sec-2-11-4"><span class="section-number-4">2.11.4</span> Ask a TA or work with another student if you run into issues!</h4>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Clara</p>
-<p class="date">Created: 2015-02-04 Wed 14:54</p>
+<p class="date">Created: 2015-02-19 Thu 16:11</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
