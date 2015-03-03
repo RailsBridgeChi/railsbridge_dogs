@@ -18,7 +18,7 @@
       <!-- so the code here will execute as many times as there are dogs -- printing a line for each dog -->
       <tr>
         <td>
-          <%= image_tag(dog.picture_url(:thumb)) if dog.picture.exists? %>
+          <%= image_tag(dog.picture_url(:thumb)) if dog.picture.file.exists? %>
         </td>
         <td><b><%= dog.name %></b></td>
 	<td><%= dog.age %></td>
