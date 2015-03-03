@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Picture</th>
       <th>Name</th>
       <th>Age</th> <!-- we added this when we added the age to the dogs table -->
       <th colspan="3"></th>
@@ -16,6 +17,9 @@
       <!-- dog is the variable for the individual dog here -->
       <!-- so the code here will execute as many times as there are dogs -- printing a line for each dog -->
       <tr>
+        <td>
+          <%= image_tag(dog.picture_url(:thumbnail) %>
+        </td>
         <td><b><%= dog.name %></b></td>
 	<td><%= dog.age %></td>
         <td><%= link_to 'Show', dog %></td>
