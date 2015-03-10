@@ -6,9 +6,9 @@ class DogsController < ApplicationController
   def index
     if params[:sort_by]
       @dogs = Dog.all.sort_by(&params[:sort_by].to_sym)
-    elsif params[:babies] == true
+    elsif params[:babies]
       @dogs = @dogs.select{|d| d.age < 5 }
-    elsif params[:pictures] == true
+    elsif params[:pictures]
       @dogs = @dogs.select{|d| !(d.picture_url.blank?) }
     else
       @dogs = Dog.all
