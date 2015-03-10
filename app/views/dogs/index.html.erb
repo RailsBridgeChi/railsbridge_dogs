@@ -2,6 +2,11 @@
 
 <p>Sort:
   <%= link_to "by name", dogs_path(sort: :name) %>
+  <%= link_to "by age", dogs_path(sort: :age) %>
+</p>
+<p>Filter:
+  <%= link_to "dogs under 5yo", dogs_path(babies: :true) %>
+  <%= link_to "dogs with pictures", dogs_path(pictures: :true) %>
 </p>
 
 <table>
