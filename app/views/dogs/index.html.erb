@@ -1,8 +1,8 @@
 <h1>Listing dogs</h1>
 
 <p>Sort:
-  <%= link_to "by name", dogs_path(sort: :name) %>
-  <%= link_to "by age", dogs_path(sort: :age) %>
+  <%= link_to "by name", dogs_path(sort_by: :name) %>
+  <%= link_to "by age", dogs_path(sort_by: :age) %>
 </p>
 <p>Filter:
   <%= link_to "dogs under 5yo", dogs_path(babies: :true) %>
