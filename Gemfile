@@ -49,3 +49,6 @@ gem 'spring',        group: :development
 # for images
 gem 'carrierwave'
 gem 'cloudinary'
+
+
+
