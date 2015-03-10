@@ -7,9 +7,9 @@ class DogsController < ApplicationController
     if params[:sort_by]
       @dogs = Dog.all.sort_by(&params[:sort_by].to_sym)
     elsif params[:babies]
-      @dogs = @dogs.select{|d| d.age < 5 }
+      @dogs = Dog.all.select{|d| d.age < 5 }
     elsif params[:pictures]
-      @dogs = @dogs.select{|d| !(d.picture_url.blank?) }
+      @dogs = Dog.all.select{|d| !(d.picture_url.blank?) }
     else
       @dogs = Dog.all
     end
