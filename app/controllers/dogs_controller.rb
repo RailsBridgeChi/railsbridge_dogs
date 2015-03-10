@@ -5,7 +5,7 @@ class DogsController < ApplicationController
   # GET /dogs.json
   def index
     if params[:sort_by]
-      @dogs = Dog.all.sort_by(params[:sort_by])
+      @dogs = Dog.all.sort_by(&params[:sort_by].to_sym)
     else
       @dogs = Dog.all
     end
