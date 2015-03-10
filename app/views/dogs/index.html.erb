@@ -1,5 +1,9 @@
 <h1>Listing dogs</h1>
 
+<p>Sort:
+  <%= link_to "by name", dogs_path(sort: :name) %>
+</p>
+
 <table>
   <thead>
     <tr>
