@@ -15,6 +15,7 @@
       <th>Picture</th>
       <th>Name</th>
       <th>Age</th> <!-- we added this when we added the age to the dogs table -->
+      <th>Breed</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -31,6 +32,7 @@
         </td>
         <td><b><%= dog.name %></b></td>
 	<td><%= dog.age %></td>
+        <td><%= dog.breed.try(:name) %></td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
         <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>

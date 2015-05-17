@@ -12,6 +12,12 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :breed_id %>
+    <%= f.collection_select(:breed_id, Breed.all, :id, :name, :prompt => true) %>
+  </div>
+      
+  
+  <div class="field">
     <%= f.label :picture %>
     <%= f.hidden_field(:picture_cache) %>
     <%= f.file_field(:picture) %>
