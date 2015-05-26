@@ -10,6 +10,8 @@ class DogsController < ApplicationController
       @dogs = Dog.all.select{|d| d.age < 5 }
     elsif params[:pictures]
       @dogs = Dog.all.select{|d| !(d.picture_url.blank?) }
+    elsif params[:breed_id]
+      @dogs = Breed.find(params[:breed_id]).dogs
     else
       @dogs = Dog.all
     end

@@ -7,7 +7,11 @@
 <p>Filter:
   <%= link_to "dogs under 5yo", dogs_path(babies: :true) %>
   <%= link_to "dogs with pictures", dogs_path(pictures: :true) %>
+  <% Breed.all.each do |b| %>
+  <%= link_to b.name, dogs_path(breed_id: b.id) %>
+  <% end %>
 </p>
+
 
 <table>
   <thead>
